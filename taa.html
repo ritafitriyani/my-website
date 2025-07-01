@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Griya Plaza Sumedang</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  
+<style>
+ /* Reset dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body dan font */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9f9f9;
+  line-height: 1.5;
+  color: #333;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Gambar agar responsif */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Navbar */
+nav {
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 2px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.3s ease;
+}
+.logo:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 8px rgba(255,255,255,0.8);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  position: relative;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s ease;
+}
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+  width: 100%;
+}
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #ffdd57;
+}
+
+/* Hamburger menu (mobile) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+.hamburger div {
+  width: 28px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger animation */
+.hamburger.active div:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+.hamburger.active div:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Responsive navbar */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    background: #004080;
+    height: 100vh;
+    width: 220px;
+    flex-direction: column;
+    gap: 25px;
+    padding: 30px 20px;
+    transition: right 0.3s ease;
+    box-shadow: -3px 0 12px rgba(0,0,0,0.2);
+    overflow-y: auto;
+  }
+  .nav-links.active {
+    right: 0;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* Hero section */
+.hero {
+  background-color: #f9f9f9;
+  padding: 30px 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  max-width: 1200px;
+  margin: 20px auto;
+  border-radius: 12px;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.hero-text h1 {
+  margin: 0 0 8px 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #222;
+}
+
+.hero-text p {
+  margin: 0 0 12px 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+#darkToggle {
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+#darkToggle:hover {
+  background-color: #555;
+}
+
+/* Sections umum */
+.section {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  color: #444;
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  border-left: 5px solid #2980b9;
+  padding-left: 15px;
+}
+
+.section h3 {
+  margin-top: 30px;
+  font-size: 1.3rem;
+  color: #34495e;
+}
+
+.section p, .section ul {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+.section ul {
+  padding-left: 20px;
+}
+
+.section li {
+  margin-bottom: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .section {
+    padding: 20px 15px;
+    margin: 30px auto;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo {
+    width: 120px;
+    margin-bottom: 15px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.6rem;
+  }
+
+  .section h2 {
+    font-size: 1.4rem;
+  }
+
+  .section h3 {
+    font-size: 1.1rem;
+  }
+
+  .section p, .section li {
+    font-size: 0.95rem;
+  }
+}
+
+/* Tombol dan interaksi */
+button {
+  user-select: none;
+}
+
+/* Scrollbar di nav mobile */
+.nav-links::-webkit-scrollbar {
+  width: 6px;
+}
+.nav-links::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.3);
+  border-radius: 3px;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  
+  <div class="logo"><h5>Griya Plaza Sumedang</h5></div>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#profile">Profile</a></li>
+    <li><a href="#tentang">Tentang Kami</a></li>
+    <li><a href="#layanan">Layanan Produk</a></li>
+    <li><a href="#struktur">Struktur</a></li>
+    <li><a href="#kontak">Kontak Kami</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</nav>
+ <section id="home" class="active">
+  </section>
+ </section>
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('active');
+  });
+
+  // Optional: close menu when link clicked (mobile)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+      }
+    });
+  });
+</script>
+
+
+
+  <header class="hero">
+  <div class="hero-content">
+    <style>
+        .hero {
+  background-color: #f9f9f9;
+  padding: 30px 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 150px;     /* Lebar logo diperbesar */
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+.hero-text h1 {
+  margin: 0 0 8px 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #222;
+}
+
+.hero-text p {
+  margin: 0 0 12px 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+#darkToggle {
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+#darkToggle:hover {
+  background-color: #555;
+}
+
+/* Responsive: kalau layar kecil, stack vertikal */
+@media screen and (max-width: 600px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .logo {
+    width: 100px;
+    margin-bottom: 15px;
+  }
+}
+</style>
+ <section id="home" class="active">
+    <img src="logo-griya.jpeg" alt="Logo Griya Plaza Sumedang" class="logo" />
+    
+      <h1>Griya Plaza Sumedang</h1>
+      <p>“Tiada hari tanpa kegiatan, tiada hari tanpa ke perbaikan”</p>
+      <button id="darkToggle">🌙 Dark Mode</button>
+  </section>
+  </header>
+
+ <section id="profile" class="section">
+  <section id="profile" class="section">
+
+  <h2>Profil Griya Plaza Sumedang</h2>
+  <style>
+    #profil-perusahaan {
+  background: #ffffff;
+   max-width: 1000px;
+  padding: 90px 50px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+}
+
+#profil-perusahaan h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  border-left: 5px solid #2980b9;
+  padding-left: 15px;
+}
+
+#profil-perusahaan h3 {
+  margin-top: 30px;
+  font-size: 1.3rem;
+  color: #34495e;
+}
+
+#profil-perusahaan p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+#profil-perusahaan ul {
+  margin: 10px 0 20px 20px;
+  padding-left: 15px;
+}
+
+#profil-perusahaan li {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+  </style>
+
+  <p>
+    <strong>Griya Plaza Sumedang</strong>, atau yang dikenal sebagai <strong>Toserba Griya Sumedang</strong>, didirikan pada tanggal <strong>26 April 1996</strong>, berlokasi di <strong>Jalan Mayor Abdurachman No. 163, Sumedang</strong>. Ini merupakan cabang ke-13 dari <strong>YOGYA Group</strong> berdasarkan waktu pendiriannya.
+  </p>
+
+  <p>
+    Sejak berdiri, Griya Sumedang telah mengalami beberapa kali perluasan. Kini, gedung Griya Plaza Sumedang memiliki <strong>3 lantai</strong> dengan pembagian area sebagai berikut:
+  </p>
+
+  <h3>🛒 Lantai 1 - Supermarket & Elektronik</h3>
+  <ul>
+    <li>Area Supermarket, Fresh, Bakery, dan GMS</li>
+    <li>Pusat elektronik <strong>Griyatron</strong>, bagian dari Yogya Group</li>
+  </ul>
+
+  <h3>👚 Lantai 2 - Fashion</h3>
+  <ul>
+    <li>Mens Wear</li>
+    <li>Ladies Fashion</li>
+    <li>Baby & Kids</li>
+    <li>Beauty Accessories</li>
+  </ul>
+
+  <h3>🍽️ Lantai 3 - Food Court & Hiburan</h3>
+  <ul>
+    <li><strong>Foodlife Kitchen</strong> milik Yogya Group</li>
+    <li>Tenant kuliner lain: Ichi Bento, Kupuku, Ayam Goreng Mergosari, Pempek QQ, Es Oyen, dan lainnya</li>
+    <li>Area bermain anak: <strong>Game Station</strong></li>
+    <li>Area khusus <strong>Shoes & Bags</strong> (sepatu dan tas)</li>
+  </ul>
+
+  <h3>🌟 Perkembangan & Ekspansi</h3>
+  <p>
+    Griya Plaza Sumedang adalah bagian dari perkembangan <strong>Yogya Group</strong> yang telah berevolusi dari toko kecil sederhana menjadi pusat perbelanjaan modern yang dikelola secara profesional. Ekspansi dilakukan ke berbagai kota seperti:
+  </p>
+  <p>
+    <em>Cirebon, Tasikmalaya, Jakarta, Sukabumi, Bogor, Indramayu, Kuningan, Pamanukan, Purwakarta, Garut, Ciamis, Banjar, dan Majenang.</em>
+  </p>
+  <p>
+    Strategi ekspansi dilakukan secara konservatif dan penuh pertimbangan, untuk memastikan bahwa setiap cabang yang dibuka mampu memberikan pelayanan maksimal dan kepuasan kepada masyarakat.
+  </p>
+
+  <h3>🧭 Komitmen Kami</h3>
+  <ul>
+    <li>Memberikan pengalaman belanja yang nyaman, lengkap, dan terjangkau</li>
+    <li>Pelayanan ramah dan profesional</li>
+    <li>Terus berkembang dengan menjaga kualitas dan kepercayaan pelanggan</li>
+  </ul>
+</section>
+</section>
+
+  <section id="tentang" class="section">
+  <section id="about" class="section">
+
+  <h2>Tentang Kami</h2>
+  <p><strong>Bidang usaha:</strong> Griya bergerak di bidang ritel, khususnya sebagai pengelola supermarket dan department store dengan nama 
+    Toserba Griya dan Toserba Yogya. Selain itu, mereka juga memiliki format minimarket dengan nama Yomart, yang merupakan bagian dari Yogya Group. 
+    Jadi, secara umum, Griya Grup beroperasi di sektor ritel, menyediakan berbagai produk kebutuhan sehari-hari bagi masyarakat.  </p>
+  <p><strong>Tahun Berdiri:</strong> 26 April 1996</p>
+  <p><strong>Visi:</strong> Tetap Menjadi Pilihan Utama. Pilihan utama bagi konsumen, mitra usaha, pasar tenaga kerja, shareholder maupun masyarakat dan pemerintah ditengah berbagai alternatif pilihan dan persaingan usaha.</p>
+  <p><strong>Misi:</strong> Setia Memenuhi Kebutuhan Masyarakat. Dengan Corporate Culture "Maju dengan karyawan bersama" dan Moral Filosofi "Jujur, Setia & Rendah Hati". YOGYA Group selalu berusaha mewujudkan kepuasan bagi konsumen dengan menyediakan produk yang berkualitas, layanan yang unggul dan akrab bersahabat, serta dalam suasana belanja yang menyenangkan.</p>
+</section>
+</section>
+
+ <section id="layanan">
+   <section id="services" class="section">
+      <h2>Layanan & Produk Utama</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Kebutuhan Sehari-hari</h3>
+          <p>Produk kebutuhan rumah tangga lengkap dan berkualitas.</p>
+        </div>
+        <div class="card">
+          <h3>Produk Susu & Perlengkapan Bayi</h3>
+          <p>Beragam pilihan perlengkapan bayi dan susu terbaik.</p>
+        </div>
+        <div class="card">
+          <h3>Fashion Anak</h3>
+          <p>Tren fashion anak terbaru dengan harga terjangkau.</p>
+        </div>
+         <div class="card">
+          <h3>Santapan Praktis & Nikmat</h3>
+          <p>Solusi santapan praktis untuk hari-hari sibuk, tanpa mengorbankan rasa.</p>
+        </div>
+        <div class="card">
+          <h3>Promosi & Diskon</h3>
+          <p>Penawaran menarik dan diskon spesial setiap bulan.</p>
+        </div>
+        <div class="card">
+          <h3>Lengkap & Terjangkau</h3>
+          <p>Kualitas produk lengkap dengan harga yang bersahabat.</p>
+        </div>
+      </div>
+    </section>
+
+    
+  <section id="struktur">
+ <title>Struktur Organisasi</title>
+ </section>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #004080;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    .job-card {
+      background-color: #ffffff;
+      border-left: 5px solid #007bff;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .job-card.section {
+      border-left-color: #28a745;
+    }
+
+    .job-card h2 {
+      margin-top: 0;
+      color: #004080;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    ul {
+      margin-top: 10px;
+      padding-left: 20px;
+      line-height: 1.5;
+    }
+
+    footer {
+      background-color: #eaeaea;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #555;
+      margin-top: 40px;
+    }
+
+    /* Bagian yang diperbaiki */
+    #deskripsi-struktur {
+      text-align: left;
+      padding: 0 20px;
+      margin-bottom: 20px;
+    }
+
+    #deskripsi-struktur h2 {
+      font-size: 24px;
+      color: #004080;
+      margin-bottom: 10px;
+    }
+
+    .org-image {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .org-image img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+ 
+  <section id="struktur" class="section">
+    <h2>Struktur Organisasi Griya Plaza Sumedang</h2>
+    <div class="org-image">
+      <img src="struktur-organisasi-griya.jpeg" alt="Struktur Organisasi Griya Plaza Sumedang">
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- Seluruh job-card tetap sama -->
+    <!-- Contoh salah satu -->
+    <div class="job-card">
+      <h2>STORE MANAGER</h2>
+      <ul>
+        <li>Memimpin seluruh operasional toko.</li>
+        <li>Bertanggung jawab atas pencapaian target penjualan.</li>
+        <li>Mengelola tim dan memastikan standar layanan pelanggan.</li>
+        <li>Menyusun strategi promosi lokal.</li>
+        <li>Memastikan ketersediaan stok dan visual toko.</li>
+      </ul>
+    </div>
+
+  <div class="job-card section">
+    <h2>CO SUPERMARKET</h2>
+    <ul>
+      <li>Membantu operasional dan pengawasan area supermarket.</li>
+      <li>Koordinasi dengan SPV dan buyer terkait display dan stok barang.</li>
+      <li>Monitoring kualitas pelayanan pelanggan.</li>
+    </ul>
+  </div>
+
+  <div class="job-card">
+    <h2>CO FASHION</h2>
+    <ul>
+      <li>Mendukung area fashion dalam penataan, penjualan, dan promosi.</li>
+      <li>Koordinasi dengan Visual Merchandising.</li>
+      <li>Mengontrol kelengkapan display dan rotasi stok fashion.</li>
+    </ul>
+  </div>
+  <div class="job-card">
+    <h2>REGIONAL PERSONALIA</h2>
+    <ul>
+      <li>Rekrutmen, penggajian, dan pengelolaan SDM regional.</li>
+      <li>Menyusun pelatihan dan pengembangan karyawan.</li>
+      <li>Menangani kedisiplinan dan administrasi karyawan.</li>
+    </ul>
+  </div>
+
+  <div class="job-card section">
+    <h2>SUPERVISOR (SPV) POSISI LAIN</h2>
+    <ul>
+      <li>Mengawasi penjualan dan operasional harian masing-masing area.</li>
+      <li>Bertanggung jawab atas display, stok, dan laporan penjualan.</li>
+      <li>Memberikan pelatihan dasar kepada staf bawahannya.</li>
+      <li>Memastikan standar pelayanan dan kebersihan area.</li>
+    </ul>
+  </div>
+
+  <div class="job-card">
+    <h2>SUPERMARKET OPERATIONAL</h2>
+    <ul>
+      <li>Menangani alur distribusi barang dari gudang ke rak.</li>
+      <li>Kontrol kualitas barang masuk dan keluar.</li>
+      <li>Koordinasi dengan SPV untuk replenishment.</li>
+    </ul>
+  </div>
+
+  <div class="job-card section">
+    <h2>ST. BUYER (FOOD / NONFOOD / FRESH)</h2>
+    <ul>
+      <li>Pemilihan produk untuk dijual di toko.</li>
+      <li>Negosiasi harga dan promo dengan supplier.</li>
+      <li>Monitoring performa produk dan supplier.</li>
+    </ul>
+  </div>
+
+  <div class="job-card">
+    <h2>ST. KEUANGAN 2 & 3</h2>
+    <ul>
+      <li>Mengelola kas toko, transaksi harian, dan pelaporan keuangan.</li>
+      <li>Kontrol terhadap prosedur keuangan dan pencatatan.</li>
+    </ul>
+  </div>
+
+  <div class="job-card section">
+    <h2>FOODCOURT</h2>
+    <ul>
+      <li>Koordinasi tenant foodcourt.</li>
+      <li>Menjaga kebersihan dan kenyamanan area makan.</li>
+      <li>Kontrol pembayaran sewa dan keluhan pelanggan.</li>
+    </ul>
+  </div>
+
+  <div class="job-card">
+    <h2>ST. RECEIVING</h2>
+    <ul>
+      <li>Menerima barang dari supplier.</li>
+      <li>Verifikasi jumlah dan kualitas barang masuk.</li>
+      <li>Input data barang ke sistem.</li>
+    </ul>
+  </div>
+
+  <div class="job-card section">
+    <h2>ST. WAREHOUSE</h2>
+    <ul>
+      <li>Mengelola penyimpanan stok barang di gudang.</li>
+      <li>Menjaga FIFO dan rotasi stok.</li>
+      <li>Koordinasi distribusi ke area display.</li>
+    </ul>
+  </div>
+
+  <div class="job-card">
+    <h2>ST. GENERAL AFFAIR</h2>
+    <ul>
+      <li>Menangani fasilitas, kebersihan, dan kebutuhan operasional umum toko.</li>
+      <li>Maintenance peralatan dan utilitas toko.</li>
+    </ul>
+  </div>
+
+  <div class="job-card section">
+    <h2>REG. EDP / ST. EDP</h2>
+    <ul>
+      <li>Menangani sistem IT toko dan pemeliharaan software/hardware.</li>
+      <li>Support sistem kasir dan jaringan toko.</li>
+      <li>Troubleshooting sistem jika terjadi error.</li>
+    </ul>
+  </div>
+
+  <div class="job-card">
+    <h2>VISUAL MERCHANDISING</h2>
+    <ul>
+      <li>Menyusun konsep penataan produk yang menarik.</li>
+      <li>Menyesuaikan tema promosi, warna, dan display.</li>
+      <li>Bekerja sama dengan SPV Fashion dan Buyer.</li>
+    </ul>
+  </div>
+
+  <div class="job-card section">
+    <h2>CUSTOMER RELATION</h2>
+    <ul>
+      <li>Menangani komplain dan feedback dari pelanggan.</li>
+      <li>Meningkatkan pengalaman pelanggan di toko.</li>
+      <li>Mengelola program loyalitas pelanggan (jika ada).</li>
+    </ul>
+  </div>
+
+</div>
+
+
+ 
+  </section>
+  <title>Kontak & Alamat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+ .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+    section.section {
+      padding: 40px 20px;
+      background-color: #fff;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .contact-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .icon {
+      font-size: 32px;
+    }
+
+    .contact-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: #222;
+    }
+
+    .contact-card p {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .alamat-container > div {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .alamat-container iframe {
+      border: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+
+    .sosmed-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-size: 14px;
+      gap: 8px;
+    }
+
+    .sosmed-link img {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+    }
+
+    .sosmed-link:hover {
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      .contact-card {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  </style>
+<section>
+
+<!-- KONTAK KAMI -->
+<section id="kontak" style="background-color:#f0f0f0;">
+  <h2>Kontak Kami</h2>
+  <div class="contact-cards">
+
+    <!-- Alamat -->
+    <div class="contact-card">
+      <span class="icon">📍</span>
+      <div>
+        <h3>Alamat</h3>
+        <p>Jl. Mayor Abdurahman No.163, Kotakaler, Kec. Sumedang Utara, Kabupaten Sumedang, Jawa Barat 45322</p>
+        <!-- Peta Google Maps -->
+        <div class="alamat-container">
+          <div>
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.177456473118!2d107.92009311477252!3d-6.819819095061039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7bd8df20ea3%3A0x184fa39eebf7a3ab!2sJl.%20Mayor%20Abdurahman%20No.163%2C%20Kotakaler%2C%20Sumedang%20Utara%2C%20Sumedang%20Regency%2C%20West%20Java%2045322%2C%20Indonesia!5e0!3m2!1sen!2sid!4v1688012345678!5m2!1sen!2sid" 
+              width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sosial Media -->
+    <div class="contact-card">
+      <span class="icon">📱</span>
+      <div>
+        <h3>Sosial Media</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="https://www.tiktok.com/@griya_sumedang" class="sosmed-link" target="_blank">
+            <img src="logo-tiktok.png" alt="TikTok"> TikTok
+          </a>
+          <a href="https://www.instagram.com/griya.sumedang/" class="sosmed-link" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"> Instagram
+          </a>
+          <a href="https://www.youtube.com/@griyasumedang367" class="sosmed-link" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube"> YouTube
+          </a>
+          <a href="https://www.facebook.com/toserba.griyasumedang/" class="sosmed-link" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="Facebook"> Facebook
+          </a>
+          <a href="https://wa.me/082240810896" class="sosmed-link" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"> WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Telepon -->
+    <div class="contact-card">
+      <span class="icon">☎️</span>
+      <div>
+        <h3>Telepon</h3>
+        <p><a href="tel:082240810896" style="color:#2980b9; text-decoration:none;">(0261) 204744</a></p>
+      </div>
+    </div>
+
+  </div> <!-- penutup .contact-cards -->
+</section>
+
+<body>
+
+  <script>
+    const darkToggle = document.getElementById("darkToggle");
+    darkToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      if (document.body.classList.contains("dark")) {
+        darkToggle.textContent = "☀️ Light Mode";
+      } else {
+        darkToggle.textContent = "🌙 Dark Mode";
+      }
+    });
+  </script>
+</body>
+</html>
