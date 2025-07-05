@@ -182,14 +182,140 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Griya Plaza Sumedang</title>
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Griya Plaza Sumedang</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+
   <style>
-    /* Header Hero */
+    /* Reset & Font */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      color: #444;
+    }
+
+    /* Navbar */
+    nav {
+      background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 2px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+    .logo:hover {
+      transform: scale(1.1);
+      text-shadow: 0 0 8px rgba(255,255,255,0.8);
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+    .nav-links li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      position: relative;
+      padding: 5px 0;
+      transition: color 0.3s ease;
+    }
+    .nav-links li a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: #fff;
+      transition: width 0.3s ease;
+    }
+    .nav-links li a:hover::after,
+    .nav-links li a.active::after {
+      width: 100%;
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #ffdd57;
+    }
+
+    /* Hamburger menu (mobile) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger div {
+      width: 28px;
+      height: 3px;
+      background: white;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.active div:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+    .hamburger.active div:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active div:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        background: #004080;
+        height: 100vh;
+        width: 220px;
+        flex-direction: column;
+        gap: 25px;
+        padding: 30px 20px;
+        transition: right 0.3s ease;
+        box-shadow: -3px 0 12px rgba(0,0,0,0.2);
+      }
+      .nav-links.active {
+        right: 0;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* Section scroll offset */
+    section {
+      scroll-margin-top: 100px;
+    }
+
+    /* Hero Header */
     .hero {
       background-color: #f9f9f9;
       padding: 30px 20px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
-
     .hero-content {
       display: flex;
       align-items: center;
@@ -197,30 +323,26 @@
       max-width: 1200px;
       margin: 0 auto;
     }
-
-    .logo {
-      width: 150px; /* Lebar logo diperbesar */
+    .hero-content .logo {
+      width: 150px;
       height: auto;
       border-radius: 8px;
       object-fit: contain;
     }
-
     .hero-text h1 {
-      margin: 0 0 8px 0;
+      margin-bottom: 8px;
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
       font-size: 2rem;
       color: #222;
     }
-
     .hero-text p {
-      margin: 0 0 12px 0;
+      margin-bottom: 12px;
       font-family: 'Poppins', sans-serif;
       font-weight: 300;
       font-size: 1.1rem;
       color: #555;
     }
-
     #darkToggle {
       padding: 8px 16px;
       font-size: 1rem;
@@ -231,34 +353,18 @@
       color: #fff;
       transition: background-color 0.3s ease;
     }
-
     #darkToggle:hover {
       background-color: #555;
     }
-
-    /* Responsive header */
     @media screen and (max-width: 600px) {
       .hero-content {
         flex-direction: column;
         text-align: center;
       }
-
-      .logo {
+      .hero-content .logo {
         width: 100px;
         margin-bottom: 15px;
       }
-    }
-
-    /* Profil Perusahaan */
-    #profil-perusahaan {
-      background: #ffffff;
-      max-width: 1000px;
-      padding: 90px 50px;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-      margin: 40px auto 40px auto;
-      font-family: 'Poppins', sans-serif;
-      color: #444;
     }
 
     /* Profil Perusahaan */
@@ -311,7 +417,6 @@
       font-family: 'Poppins', sans-serif;
       color: #444;
     }
-
     #about h2 {
       font-size: 2rem;
       color: #2c3e50;
@@ -319,13 +424,46 @@
       border-left: 5px solid #2980b9;
       padding-left: 15px;
     }
-
     #about p {
       font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 15px;
       color: #555;
     }
+
+    /* Layanan */
+    #layanan {
+      max-width: 1000px;
+      margin: 0 auto 60px auto;
+      padding: 40px 50px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      font-family: 'Poppins', sans-serif;
+      color: #444;
+    }
+    #layanan h2 {
+      font-size: 2rem;
+      color: #2c3e50;
+      margin-bottom: 30px;
+      border-left: 5px solid #2980b9;
+      padding-left: 15px;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .card {
+      background: #f7f9fc;
+      border-radius: 12px;
+      padding: 20px;
+      flex: 1 1 280px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    .
 
     /* Layanan */
     #services {
