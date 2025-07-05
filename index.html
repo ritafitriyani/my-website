@@ -532,6 +532,54 @@ section {
       color: #555;
       line-height: 1.4;
     }
+.dark-toggle {
+  background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+  transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+.dark-toggle:hover {
+  background: linear-gradient(135deg, #005f99, #00bfff);
+  box-shadow: 0 6px 20px rgba(0, 95, 153, 0.7);
+  transform: scale(1.05);
+}
+
+.dark-toggle:active {
+  transform: scale(0.95);
+}
+
+.dark-toggle .icon {
+  font-size: 1.2rem;
+  transition: transform 0.4s ease;
+}
+
+/* Ketika mode gelap aktif, ikon dan teks berubah */
+body.dark-mode .dark-toggle {
+  background: linear-gradient(135deg, #243B6B, #3B5BA9);
+  box-shadow: 0 4px 15px rgba(59, 91, 169, 0.6);
+}
+
+body.dark-mode .dark-toggle:hover {
+  background: linear-gradient(135deg, #1A2A4D, #2D4578);
+  box-shadow: 0 6px 20px rgba(45, 69, 120, 0.8);
+}
+
+/* Optional: putar ikon saat toggle */
+body.dark-mode .dark-toggle .icon {
+  transform: rotate(360deg);
+}
 
     /* Responsive Layanan */
     @media screen and (max-width: 700px) {
@@ -558,9 +606,9 @@ section {
       <div class="hero-text">
         <h1>Griya Plaza Sumedang</h1>
         <p>“Tiada hari tanpa kegiatan, tiada hari tanpa ke perbaikan”</p>
-        <button id="darkToggle">🌙 Dark Mode</button>
-      </div>
-    </div>
+       <button id="darkToggle" class="dark-toggle">
+  <span class="icon">🌙</span> <span class="text">Dark Mode</span>
+</button>
   </header>
 
   <!-- Profil Perusahaan -->
@@ -920,24 +968,30 @@ section {
 
     <script>
     const darkToggle = document.getElementById('darkToggle');
-    const body = document.body;
+const body = document.body;
+const icon = darkToggle.querySelector('.icon');
+const text = darkToggle.querySelector('.text');
 
-    // Load mode dari localStorage jika ada
-    if(localStorage.getItem('darkMode') === 'enabled') {
-      body.classList.add('dark-mode');
-      darkToggle.textContent = '☀️ Light Mode';
-    }
+// Load mode dari localStorage jika ada
+if(localStorage.getItem('darkMode') === 'enabled') {
+  body.classList.add('dark-mode');
+  icon.textContent = '☀️';
+  text.textContent = 'Light Mode';
+}
 
-    darkToggle.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      if(body.classList.contains('dark-mode')) {
-        darkToggle.textContent = '☀️ Light Mode';
-        localStorage.setItem('darkMode', 'enabled');
-      } else {
-        darkToggle.textContent = '🌙 Dark Mode';
-        localStorage.setItem('darkMode', 'disabled');
-      }
-    });
+darkToggle.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  if(body.classList.contains('dark-mode')) {
+    icon.textContent = '☀️';
+    text.textContent = 'Light Mode';
+    localStorage.setItem('darkMode', 'enabled');
+  } else {
+    icon.textContent = '🌙';
+    text.textContent = 'Dark Mode';
+    localStorage.setItem('darkMode', 'disabled');
+  }
+});
+
   </script>
 
 </body>
