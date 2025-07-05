@@ -343,30 +343,43 @@
       font-size: 1.1rem;
       color: #555;
     }
-    #darkToggle {
-      padding: 8px 16px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      background-color: #333;
-      color: #fff;
-      transition: background-color 0.3s ease;
-    }
-    #darkToggle:hover {
-      background-color: #555;
-    }
-    @media screen and (max-width: 600px) {
-      .hero-content {
-        flex-direction: column;
-        text-align: center;
-      }
-      .hero-content .logo {
-        width: 100px;
-        margin-bottom: 15px;
-      }
-    }
+  
+body.dark-mode {
+  background-color: #1A2A4D;
+  color: #E0E7FF;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
+body.dark-mode .card, 
+body.dark-mode header, 
+body.dark-mode footer {
+  background-color: #243B6B;
+  color: #A9B9FF;
+}
+
+body.dark-mode a {
+  color: #779EFF;
+  text-decoration: underline;
+}
+
+body.dark-mode button, 
+body.dark-mode #darkToggle {
+  background-color: #3B5BA9;
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 91, 169, 0.6);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode button:hover, 
+body.dark-mode #darkToggle:hover {
+  background-color: #2D4578;
+  box-shadow: 0 6px 20px rgba(45, 69, 120, 0.8);
+}
+
+      
     /* Profil Perusahaan */
     #profile-perusahaan {
       background: #ffffff;
@@ -906,16 +919,27 @@ section {
 
 
 
-  <script>
-    const darkToggle = document.getElementById("darkToggle");
-    darkToggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      if (document.body.classList.contains("dark")) {
-        darkToggle.textContent = "☀️ Light Mode";
+    <script>
+    const darkToggle = document.getElementById('darkToggle');
+    const body = document.body;
+
+    // Load mode dari localStorage jika ada
+    if(localStorage.getItem('darkMode') === 'enabled') {
+      body.classList.add('dark-mode');
+      darkToggle.textContent = '☀️ Light Mode';
+    }
+
+    darkToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      if(body.classList.contains('dark-mode')) {
+        darkToggle.textContent = '☀️ Light Mode';
+        localStorage.setItem('darkMode', 'enabled');
       } else {
-        darkToggle.textContent = "🌙 Dark Mode";
+        darkToggle.textContent = '🌙 Dark Mode';
+        localStorage.setItem('darkMode', 'disabled');
       }
     });
   </script>
+
 </body>
 </html>
