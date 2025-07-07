@@ -412,29 +412,43 @@ body.dark-mode #darkToggle:hover {
     }
 
     /* Tentang Kami */
-    #about ul{
-      max-width: 1000px;
-      margin: 0 auto 40px auto;
-      padding: 40px 50px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-      font-family: 'Poppins', sans-serif;
-      color: #444;
-    }
-     #about h2 {
-      font-size: 2rem;
-      color: #2c3e50;
-      margin-bottom: 20px;
-      border-left: 5px solid #2980b9;
-      padding-left: 15px;
-    }
-    #about p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 15px;
-      color: #555;
-    }
+    #about {
+    background: #f7f9fc;
+    padding: 60px 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  #about h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    border-left: 5px solid #2980b9;
+    padding-left: 15px;
+    text-align: left;
+    max-width: 1000px;
+    margin-inline: auto;
+  }
+
+  #about .content-box {
+    max-width: 1000px;
+    margin: auto;
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    color: #444;
+  }
+
+  #about p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #555;
+  }
+
+  #about p strong {
+    color: #2c3e50;
+  }
 
     /* Layanan */
     #layanan {
@@ -649,14 +663,16 @@ body.dark-mode .dark-toggle .icon {
 
   <!-- Tentang Kami -->
 
-  <section id="about" class="section">
-    <h2>Tentang Kami</h2>
+  <section id="about">
+      <div class="content-box">
+        <h2><center>Tentang Kami</center></h2>
     <p><strong>Bidang usaha:</strong> Griya bergerak di bidang ritel, khususnya sebagai pengelola supermarket dan department store dengan nama 
     Toserba Griya dan Toserba Yogya. Selain itu, mereka juga memiliki format minimarket dengan nama Yomart, yang merupakan bagian dari Yogya Group. 
     Jadi, secara umum, Griya Grup beroperasi di sektor ritel, menyediakan berbagai produk kebutuhan sehari-hari bagi masyarakat.</p>
     <p><strong>Tahun Berdiri:</strong> 26 April 1996</p>
     <p><strong>Visi:</strong> Tetap Menjadi Pilihan Utama. Pilihan utama bagi konsumen, mitra usaha, pasar tenaga kerja, shareholder maupun masyarakat dan pemerintah ditengah berbagai alternatif pilihan dan persaingan usaha.</p>
     <p><strong>Misi:</strong> Setia Memenuhi Kebutuhan Masyarakat. Dengan Corporate Culture "Maju dengan karyawan bersama" dan Moral Filosofi "Jujur, Setia & Rendah Hati". YOGYA Group selalu berusaha mewujudkan kepuasan bagi konsumen dengan menyediakan produk yang berkualitas, layanan yang unggul dan akrab bersahabat, serta dalam suasana belanja yang menyenangkan.</p>
+ </div>
   </section>
 
   <!-- Layanan & Produk -->
@@ -690,7 +706,6 @@ body.dark-mode .dark-toggle .icon {
       </div>
     </div>
   </section>
-
 
   <title>Struktur Organisasi Griya Plaza Sumedang</title>
 
@@ -774,6 +789,10 @@ body.dark-mode .dark-toggle .icon {
     <div class="org-image">
       <img src="struktur-organisasi-griya.jpeg" alt="Struktur Organisasi Griya Plaza Sumedang" />
     </div>
+  </section>
+</body>
+</html>
+
   </section>
   <title>Kontak & Alamat</title>
   <style>
